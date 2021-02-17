@@ -1,15 +1,11 @@
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
+// Need to import photonlib and pose2d here?
 
 public class Main {
     public static void main(String[] args) {
 
-        NetworkTableInstance inst = NetworkTableInstance.getDefault();
-        NetworkTable table = inst.getTable("photonVision");
-        NetworkTableEntry xEntry = table.getEntry("x");
-        NetworkTableEntry yEntry = table.getEntry("y");
-        inst.startClientTeam(4201);  // where TEAM=190, 294, etc, or use inst.startClient("hostname") or similar
+        PhotonCamera camera = new PhotonCamera("MyCamera");
+        PhotonTrackedTarget target;
+        Transform2d pose;
 
         while (true) {
             try {
@@ -18,8 +14,10 @@ public class Main {
                 System.out.println("interrupted");
                 return;
             }
-            double x = xEntry.getDouble(0.0);
-            double y = yEntry.getDouble(0.0);
+            target = result.getBestTarge()
+            pose = target.getCameraToTarget();
+            double x = pose.getTranslation().getX();
+            double y = pose.getTranslation().getY();
             System.out.println("X: " + x + " Y: " + y);
         }
     }
