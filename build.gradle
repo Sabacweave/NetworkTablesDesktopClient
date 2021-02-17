@@ -9,19 +9,23 @@ repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
-    mavenCentral()
-    mavenLocal()
-    maven {
-        url 'http://first.wpi.edu/FRC/roborio/maven/release'
-    }
+    maven { url "https://frcmaven.wpi.edu/artifactory/release/" }
 }
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 
-    // WPILib Libraries
-    compile group: 'edu.wpi.first.ntcore', name: 'ntcore-java', version: '2019.4.1'
+    // Add ntcore-java
+    compile "edu.wpi.first.ntcore:ntcore-java:2021.2.2"
+
+    // Add wpiutil-java
+    compile "edu.wpi.first.wpiutil:wpiutil-java:2021.2.2"
+
+    // Add ntcore-jni for runtime. We are adding all supported platforms
+    // so that our application will work on all supported platforms.
+    runtime "edu.wpi.first.ntcore:ntcore-jni:2021.2.2:windowsx86"
+    runtime "edu.wpi.first.ntcore:ntcore-jni:2021.2.2:windowsx86-64"
 
 }
 
