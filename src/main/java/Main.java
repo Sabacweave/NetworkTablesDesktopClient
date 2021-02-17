@@ -7,9 +7,10 @@ public class Main {
 
         NetworkTableInstance inst = NetworkTableInstance.getDefault();
         NetworkTable table = inst.getTable("photonVision");
-        NetworkTableEntry xEntry = table.getEntry("x");
-        NetworkTableEntry yEntry = table.getEntry("y");
+        NetworkTableEntry poseEntry = table.getEntry("targetPose");
         inst.startClientTeam(4201);  // where TEAM=190, 294, etc, or use inst.startClient("hostname") or similar
+
+        double[] defaultValue = new double[0];
 
         while (true) {
             try {
@@ -18,8 +19,8 @@ public class Main {
                 System.out.println("interrupted");
                 return;
             }
-            double x = xEntry.getDouble(0.0);
-            double y = yEntry.getDouble(0.0);
+            double x = poseEntry.getDoubleArray(defaultValue)[0];
+            double y = poseEntry.getDoubleArray(defaultValue)[1];
             System.out.println("X: " + x + " Y: " + y);
         }
     }
