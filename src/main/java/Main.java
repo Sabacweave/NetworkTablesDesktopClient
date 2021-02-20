@@ -1,3 +1,4 @@
+
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -7,12 +8,12 @@ public class Main {
 
         // NetworkTableInstance inst = NetworkTableInstance.getDefault();
         NetworkTableInstance inst = NetworkTableInstance.create();
-        inst.setServer("localhost");
-        NetworkTable table = inst.getTable("photonVision");
+        NetworkTable table = inst.getTable("photonvision");
         NetworkTableEntry poseEntry = table.getEntry("targetPose");
-        inst.startClientTeam(4201);  // where TEAM=190, 294, etc, or use inst.startClient("hostname") or similar
+        inst.startClient("localhost",1735);
+        // inst.startClientTeam(4201);  // where TEAM=190, 294, etc, or use inst.startClient("hostname") or similar
 
-        double[] defaultValue = {8,8,8};
+        double[] defaultValue = {8,8};
         
         System.out.println(inst.getNetworkMode());
 
