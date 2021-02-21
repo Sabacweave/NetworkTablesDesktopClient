@@ -8,14 +8,11 @@ public class Main {
 
         // NetworkTableInstance inst = NetworkTableInstance.getDefault();
         NetworkTableInstance inst = NetworkTableInstance.create();
-        NetworkTable table = inst.getTable("photonvision");
-        NetworkTableEntry poseEntry = table.getEntry("targetPose");
         inst.startClient("localhost",1735);
+        NetworkTable table = inst.getTable("photonvision/Integrated_Webcam");
+        NetworkTableEntry xEntry = table.getEntry("targetPixelsX");
+        NetworkTableEntry yEntry = table.getEntry("targetPixelsY");
         // inst.startClientTeam(4201);  // where TEAM=190, 294, etc, or use inst.startClient("hostname") or similar
-
-        double[] defaultValue = {8,8};
-        
-        System.out.println(inst.getNetworkMode());
 
         while (true) {
             try {
@@ -24,8 +21,8 @@ public class Main {
                 System.out.println("interrupted");
                 return;
             }
-            double x = (poseEntry.getDoubleArray(defaultValue))[0];
-            double y = (poseEntry.getDoubleArray(defaultValue))[1];
+            double x = (xEntry.getDouble(0));
+            double y = (yEntry.getDouble(0));
             System.out.println("X: " + x + " Y: " + y);
         }
     }
