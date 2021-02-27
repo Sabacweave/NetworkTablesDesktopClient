@@ -12,7 +12,7 @@ repositories {
     mavenCentral()
     mavenLocal()
     maven {
-        url 'http://first.wpi.edu/FRC/roborio/maven/release'
+        url 'https://maven.photonvision.org/repository/internal/org/photonvision/lib/PhotonLib-java/'
     }
 }
 
