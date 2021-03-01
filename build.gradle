@@ -21,7 +21,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 
     // WPILib Libraries
-    compile group: 'edu.wpi.first.ntcore', name: 'ntcore-java', version: '2019.4.1'
+    compile group: 'edu.wpi.first.ntcore', name: 'ntcore-java', version: '2021.2.2'
 
 }
 
