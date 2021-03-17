@@ -6,10 +6,10 @@ public class Main {
     public static void main(String[] args) {
 
         NetworkTableInstance inst = NetworkTableInstance.getDefault();
-        NetworkTable table = inst.getTable("photonVision");
-        NetworkTableEntry xEntry = table.getEntry("x");
-        NetworkTableEntry yEntry = table.getEntry("y");
-        inst.startClientTeam(4201);  // where TEAM=190, 294, etc, or use inst.startClient("hostname") or similar
+        NetworkTable table = inst.getTable("photonvision/Integrated_Camera");
+        NetworkTableEntry xEntry = table.getEntry("targetPixelsX");
+        NetworkTableEntry yEntry = table.getEntry("targetPixelsY");
+        inst.startClient("localhost", 1735); 
 
         while (true) {
             try {
